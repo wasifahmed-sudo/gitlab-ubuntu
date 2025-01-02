@@ -7,7 +7,7 @@ CPU: 2 cores (minimum)
 Update the system:
 Install Dependencies:
 2. Add the GitLab Package Repository
-bashCopy codecurl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | sudo bash  # Ubuntucurl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash  # CentOS
+curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | sudo bash
 3. Install GitLab
 Download and Install GitLab: Replace 13.x with the specific version you want to install:
 Reconfigure GitLab:
