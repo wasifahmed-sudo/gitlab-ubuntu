@@ -36,3 +36,10 @@ bashCopy codesudo gitlab-ctl reconfigure
 bashCopy codesudo EXTERNAL_URL="http://gitlab.example.com" apt install gitlab-ee=13.x.x-ee.0  # Ubuntusudo EXTERNAL_URL="http://gitlab.example.com" yum install gitlab-ee-13.x.x-ee.0  # CentOS
 bashCopy code# Install required toolssudo apt install -y curl openssh-server ca-certificates tzdata perl # Ubuntusudo yum install -y curl policycoreutils-python openssh-server perl # CentOS# Install Postfix (for email notifications, optional)sudo apt install -y postfix  # Ubuntusudo yum install -y postfix  # CentOS
 bashCopy codesudo apt update && sudo apt upgrade -y 
+
+
+
+--------------------------
+
+
+echo "deb https://packages.gitlab.com/gitlab/gitlab-ce/ubuntu/ focal main" | sudo tee /etc/apt/sources.list.d/gitlab_gitlab-ce.list
