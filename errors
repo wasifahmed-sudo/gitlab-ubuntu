@@ -1,0 +1,22 @@
+Running handlers:
+There was an error running gitlab-ctl reconfigure:
+
+rails_migration[gitlab-rails] (gitlab::database_migrations line 54) had an error: Mixlib::ShellOut::ShellCommandFailed: bash[migrate gitlab-rails database] (/opt/gitlab/embedded/cookbooks/cache/cookbooks/gitlab/resources/rails_migration.rb line 16) had an error: Mixlib::ShellOut::ShellCommandFailed: Expected process to exit with [0], but received '1'
+---- Begin output of "bash"  "/tmp/chef-script20250102-6671-9bhynz" ----
+STDOUT: psql:/opt/gitlab/embedded/service/gitlab-rails/db/structure.sql:9: ERROR:  permission denied to create extension "btree_gist"
+HINT:  Must be superuser to create this extension.
+rake aborted!
+failed to execute:
+psql -v ON_ERROR_STOP=1 -q -X -f /opt/gitlab/embedded/service/gitlab-rails/db/structure.sql --single-transaction gitlabhq
+
+Please check the output above for any errors and make sure that `psql` is installed in your PATH and has proper permissions.
+
+/opt/gitlab/embedded/service/gitlab-rails/lib/gitlab/database/postgresql_database_tasks/load_schema_versions_mixin.rb:10:in `structure_load'
+/opt/gitlab/embedded/service/gitlab-rails/lib/tasks/gitlab/db.rake:65:in `block (3 levels) in <top (required)>'
+/opt/gitlab/embedded/bin/bundle:23:in `load'
+/opt/gitlab/embedded/bin/bundle:23:in `<main>'
+Tasks: TOP => db:structure:load
+(See full trace by running task with --trace)
+STDERR: 
+---- End output of "bash"  "/tmp/chef-script20250102-6671-9bhynz" ----
+Ran "bash"  "/tmp/chef-script20250102-6671-9bhynz" returned 1
