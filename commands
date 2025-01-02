@@ -1,0 +1,38 @@
+1. Prepare the Environment
+System Requirements:
+OS: Ubuntu 18.04/20.04 or CentOS 7/8
+RAM: Minimum 4GB (8GB recommended)
+Storage: At least 10GB for installation; more for repositories
+CPU: 2 cores (minimum)
+Update the system:
+Install Dependencies:
+2. Add the GitLab Package Repository
+bashCopy codecurl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | sudo bash  # Ubuntucurl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash  # CentOS
+3. Install GitLab
+Download and Install GitLab: Replace 13.x with the specific version you want to install:
+Reconfigure GitLab:
+4. Configure GitLab
+Access GitLab: Open your web browser and navigate to http://gitlab.example.com.
+Set the Root Password: When you visit GitLab for the first time, it will prompt you to set the root password.
+Login: Use root as the username and the password you set.
+5. Optional Configurations
+HTTPS (TLS/SSL): If using HTTPS, configure the certificates:
+Obtain a certificate (e.g., via Let's Encrypt).
+Update /etc/gitlab/gitlab.rb with SSL configurations:
+Reconfigure:
+Backup and Restore: Configure backups in /etc/gitlab/gitlab.rb and schedule regular backups.
+6. Verify Installation
+Check GitLab status:
+bashCopy codesudo gitlab-ctl status
+Log files are available in /var/log/gitlab.
+7. Upgrade GitLab (Optional)
+To ensure compatibility and security, consider upgrading GitLab to the latest minor version in the 13.x series:
+bashCopy codesudo apt update && sudo apt upgrade -y  # Ubuntusudo yum update -y                      # CentOS
+sudo gitlab-ctl reconfigure
+ 
+bashCopy codesudo gitlab-ctl reconfigure
+rubyCopy codeexternal_url 'https://gitlab.example.com'nginx['ssl_certificate'] = "/etc/ssl/certs/your-cert.pem"nginx['ssl_certificate_key'] = "/etc/ssl/private/your-cert.key"
+bashCopy codesudo gitlab-ctl reconfigure
+bashCopy codesudo EXTERNAL_URL="http://gitlab.example.com" apt install gitlab-ee=13.x.x-ee.0  # Ubuntusudo EXTERNAL_URL="http://gitlab.example.com" yum install gitlab-ee-13.x.x-ee.0  # CentOS
+bashCopy code# Install required toolssudo apt install -y curl openssh-server ca-certificates tzdata perl # Ubuntusudo yum install -y curl policycoreutils-python openssh-server perl # CentOS# Install Postfix (for email notifications, optional)sudo apt install -y postfix  # Ubuntusudo yum install -y postfix  # CentOS
+bashCopy codesudo apt update && sudo apt upgrade -y 
